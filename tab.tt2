@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+[%~ PROCESS setup.tt2 ~%]
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>[% game.name %] (fission_engine)</title>
+    <link rel="stylesheet" href="aux/bootstrap.css">
+    <style type="text/css">
+      body {
+        background-color: transparent;
+      }
+      div.preload
+      {
+        height:1px;
+        width:1px;
+        overflow: hidden;
+      }
+      div.preload img
+      {
+        height: auto;
+        width: auto;
+        max-width: none;
+      }
+
+      div.client canvas
+      {
+        background-color: rgba(1, 1, 1, 0.2);
+      }
+
+      div.client progress
+      {
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+      }
+
+    </style>
+    <script src="aux/jquery-1.9.0.min.js"></script>
+    <script src="aux/bootstrap.min.js"></script>
+    <script src="fission_engine/fission.js"></script>
+  </head>
+  <body>
+    [% content %]
+    <center>
+      <div id='client' class="client"></div>
+    </center>
+
+    <!-- Quantcast Tag -->
+    <script type="text/javascript">
+    var _qevents = _qevents || [];
+
+    (function() {
+    var elem = document.createElement('script');
+    elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+    elem.async = true;
+    elem.type = "text/javascript";
+    var scpt = document.getElementsByTagName('script')[0];
+    scpt.parentNode.insertBefore(elem, scpt);
+    })();
+
+    _qevents.push({
+    qacct:"p--aEfN55nkYzzK"
+    });
+    </script>
+
+    <noscript>
+    <div style="display:none;">
+    <img src="//pixel.quantserve.com/pixel/p--aEfN55nkYzzK.gif" border="0" height="1" width="1" alt="Quantcast"/>
+    </div>
+    </noscript>
+    <!-- End Quantcast tag -->
+
+  </body>
+</html>
