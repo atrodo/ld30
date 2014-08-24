@@ -19,6 +19,7 @@ function Action(options, kb_trigger)
 
   $.extend(true, this, {
     action_name: action_name,
+    active: true,
     handler: $.noop,
     triggers: {
       kb: kb_trigger,
@@ -35,6 +36,16 @@ function Action(options, kb_trigger)
 
   if (!($.isFunction(self.handler)))
     die("handler for Action must be a function", self.handler);
+
+  self.activate = function()
+  {
+    self.active = true;
+  }
+
+  self.deactivate = function()
+  {
+    self.active = false;
+  }
 
   self.set_trigger = function(trigger, trigger_class)
   {
@@ -133,7 +144,8 @@ function Action(options, kb_trigger)
 
   self.trigger = function()
   {
-    return self.handler()
+    if (self.active)
+      return self.handler()
   }
 
   self.toString = function()
@@ -556,11 +568,11 @@ function Input(options)
 
       "click": function(e)
       {
-        warn(e);
-
         var target_pos = $(e.currentTarget).position()
         var x = e.pageX - target_pos.left
         var y = e.pageY - target_pos.top
+
+        warn(x + "," + y, triggers.click)
 
         self.trigger(x + "," + y, triggers.click)
       }
