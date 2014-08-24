@@ -80,6 +80,21 @@ var compact_array = function(old_all)
   return new_all;
 }
 
+var condense_array = function(all)
+{
+  var tmp_all = []
+  for (var i in all)
+  {
+    if (all[i] != undefined)
+    {
+      tmp_all.push(all[i])
+    }
+  }
+
+  Array.prototype.splice.apply(all, 0, all.length, tmp_all)
+  return all;
+}
+
 var combine_arrays = function(old_all)
 {
   var result = []
