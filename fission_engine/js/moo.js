@@ -227,6 +227,11 @@
         }).call(this);
       };
 
+      if (isFunction(this.BUILD))
+      {
+        this.BUILD()
+      }
+
       Object.seal(this);
     };
 
