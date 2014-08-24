@@ -89,9 +89,15 @@ var condense_array = function(all)
     {
       tmp_all.push(all[i])
     }
+    delete all[i]
   }
 
-  Array.prototype.splice.apply(all, 0, all.length, tmp_all)
+  all.length = 0
+  for (var i in tmp_all)
+  {
+    all[i] = tmp_all[i]
+  }
+
   return all;
 }
 
