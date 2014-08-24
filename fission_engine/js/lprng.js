@@ -62,7 +62,8 @@
       if (arguments.length == 1 && arguments[0] instanceof Array)
         choices = arguments[0]
 
-      return choices[Math.floor(this.random(choices.length))];
+      var n = this.random() * 1/mod
+      return choices[Math.floor(n * choices.length)];
     }
 
 
