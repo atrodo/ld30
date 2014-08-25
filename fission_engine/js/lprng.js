@@ -40,7 +40,7 @@
 
     this.prng = function(multi)
     {
-      multi = multi || 1
+      //multi = multi || 1
       var lfsr = this.lfsr
       var s = this.data[this.idx] ^ lfsr
 
@@ -53,7 +53,10 @@
       this.data[this.idx] = s
       this.lfsr = lfsr;
 
-      return this.data[this.idx]
+      if (multi == null)
+        return this.data[this.idx]
+
+      return 1/mod * multi * this.data[this.idx]
     }
 
     this.choose = function()
